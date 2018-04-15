@@ -35,10 +35,10 @@ import os
 # for chosing bins to listen to in real-time analysis in SHODAN.
 #
 # Define directory with noise reduced wav files (noise reduced with Audacity).
-raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/1 Noise Reduced/*.wav"))
+raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/2017-04-24T10-45-43 Noise Reduced/*.wav"))
 #
 # Define output directory to store individual and combined aggregated peak count histograms.
-output_directory = "/media/loek/HD/Cyborg/Master thesis/data/Preprocessed/offline/2017-02-13T17-44-01 (#1)"
+output_directory = "/media/loek/HD/Cyborg/Master thesis/data/Preprocessed/offline/2017-04-24T10-45-43"
 # First part is a custom preak detection algorithm written by Marcos Duarte:
 # ---- start peak detection algorithm
 # script motivated by matlab's https://se.mathworks.com/help/signal/ref/findpeaks.html
@@ -288,7 +288,7 @@ for path in raw_filenames:
 
         print("electrode " + name + " window offset [s] " + str(current_window_offset) + " count peaks")
 
-        f_detected = np.zeros(len(data[:,0]))
+        #f_detected = np.zeros(len(data[:,0]))
         for f_index, row in enumerate(data):
             firing_histogram[f_index]["bin"] = str(int(f[f_index])) + "-" + str(int(f[f_index]) + f_step)
 
@@ -299,8 +299,8 @@ for path in raw_filenames:
                     # we are certain that it is a peak
                     firing_histogram[f_index]["count"] += 1
 
-                    if row[peak_index] > f_detected[index]:
-                        f_detected[peak_index] = row[peak_index]
+                    #if row[peak_index] > f_detected[index]:
+                    #    f_detected[peak_index] = row[peak_index]
 
         start = int(np.argwhere(firing_histogram["bin"] == "300-310"))
         stop = int(np.argwhere(firing_histogram["bin"] == "3000-3010"))
