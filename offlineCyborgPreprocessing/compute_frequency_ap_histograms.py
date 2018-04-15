@@ -1,3 +1,10 @@
+from __future__ import division, print_function
+import numpy as np
+from scipy.io.wavfile import read
+from scipy.signal import stft, get_window
+import glob
+import os
+
 # The preprocessed output from this script should be comparable
 # to the preprocessed output from Example 2 in fs2CyborgPreprocessing 
 # README.md https://github.com/ivartz/fs2CyborgPreprocessing/blob/master/README.md .
@@ -28,29 +35,20 @@
 # for chosing bins to listen to in real-time analysis in SHODAN.
 #
 # Define directory with noise reduced wav files (noise reduced with Audacity).
-raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/2 Noise Reduced/*.wav"))
+raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/1 Noise Reduced/*.wav"))
 #
 # Define output directory to store individual and combined aggregated peak count histograms.
-output_directory = "/media/loek/HD/Cyborg/Master thesis/2_noise_reduced_windows/rate_histograms"
+output_directory = "/media/loek/HD/Cyborg/Master thesis/data/Preprocessed/offline/2017-02-13T17-44-01 (#1)"
 # First part is a custom preak detection algorithm written by Marcos Duarte:
 # ---- start peak detection algorithm
 # script motivated by matlab's https://se.mathworks.com/help/signal/ref/findpeaks.html
 # http://nbviewer.jupyter.org/github/demotu/BMC/blob/master/notebooks/DetectPeaks.ipynb
 
-# %load ./../functions/detect_peaks.py
 """Detect peaks in data based on their amplitude and other features."""
-
-from __future__ import division, print_function
-import numpy as np
-from scipy.io.wavfile import read
-from scipy.signal import stft, get_window
-import glob
-import os
 
 __author__ = "Marcos Duarte, https://github.com/demotu/BMC"
 __version__ = "1.0.4"
 __license__ = "MIT"
-
 
 def detect_peaks(x, mph=None, mpd=1, threshold=0, edge='rising',
                  kpsh=False, valley=False, show=False, ax=None):

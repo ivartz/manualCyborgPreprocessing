@@ -35,11 +35,11 @@ import os
 # Specify the system path to (and including)
 # the folder with csv files exported from
 # Multi Channel DataManager with the ASCII option.
-file_path_to_folder_with_raw_csv = "/media/loek/HD/Cyborg/Master thesis/testing" # <-- EDIT HERE! FOLDER WHERE csv files are placed.
+file_path_to_folder_with_raw_csv = "/media/loek/HD/Cyborg/four_experiments_s4" # <-- EDIT HERE! FOLDER WHERE csv files are placed.
                                                                                  # Full system path might be required.
 # Specify the system path to the
 # folder where to save the sound-
-save_path_for_sound = "/media/loek/HD/Cyborg/Master thesis/testing/Sound/Fs10000" # <-- EDIT HERE! FOLDER WHERE to save sound.
+save_path_for_sound = "/media/loek/HD/Cyborg/Master thesis/Sound/3" # <-- EDIT HERE! FOLDER WHERE to save sound.
 
 # the following line stores all the csv file names as a list of strings
 raw_filenames = sorted(glob.glob(file_path_to_folder_with_raw_csv + "/*.csv")) # * to select all files with file extension .csv
@@ -55,7 +55,7 @@ def find_index_of_list_containing_string(l, s):
 
 # SELECT the csv to import by
 # writing the START OF THE FILE NAME.
-experiment_index = find_index_of_list_containing_string(raw_filenames, "2") # <-- EDIT HERE! START OF THE CSV FILE NAME TO SELECT.
+experiment_index = find_index_of_list_containing_string(raw_filenames, "2017-05-02T15-18-41") # <-- EDIT HERE! START OF THE CSV FILE NAME TO SELECT.
 
 # Select the csv file to import.
 file_to_import = raw_filenames[experiment_index]
