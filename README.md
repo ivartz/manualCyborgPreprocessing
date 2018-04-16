@@ -13,7 +13,7 @@ A collection of scripts and guides to complement fs2CyborgPreprocessing.
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_selecting_noise_segment.png)
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_noise_reduced.PNG)
 
-3. Use noise reduced wav files to make 6 seconds 80 % overlapping sliding windows producing histograms matrices of peak counts by running compute_frequency_ap_histograms.py.
+3. Use noise reduced wav files to make 6 seconds 80 % overlapping sliding windows producing a histogram matrix of peak counts by running compute_frequency_ap_histograms.py.
 Displayed is the resulting matrix for electrode 87 visualized along time axis.
 ![2 87 raw audio audacity](/img/2_87_AP_detection_from_sliding_6s_STFT_windows.PNG)
 Electrode 87 matrix visualized.
