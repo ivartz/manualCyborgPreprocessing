@@ -6,10 +6,10 @@ A collection of scripts and guides to complement fs2CyborgPreprocessing.
 
 ## Example: Offline preprocessing.
 
-1. Select MEA2 Dopey experiment #2 (2017-03-20). Electrode 87 is converted to audio for visualization using convert_to_sound.py and displayed in Audacity.
+1. Select MEA2 Dopey experiment #2 (2017-03-20). Convert the raw ASCII csv from MultiChannel DataManager directly to audio files using convert_to_sound.py . Audio of electrode 87 is visualized in Audacity and used to extract noise segments in the example.
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity.png)
 
-2. Use audacity's Noise reduction Effect to reduce noise in all electrodes, based on a selected noise segment in electrode 87. Export to wav files with "Export multiple".
+2. Use audacity's Noise reduction Effect to reduce noise in all electrodes, based on a selected noise segment in electrode 87. Export all noise reduced electrode signals to wav files with "Export multiple" in File dialog.
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_selecting_noise_segment.png)
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_noise_reduced.PNG)
 
