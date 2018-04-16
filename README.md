@@ -9,12 +9,12 @@ A collection of scripts and guides to complement fs2CyborgPreprocessing.
 1. Select MEA2 Dopey experiment #2 (2017-03-20). Convert the raw ASCII csv from MultiChannel DataManager directly to audio files using convert_to_sound.py . Audio of electrode 87 is visualized in Audacity and used to extract noise segments in the example.
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity.png)
 
-2. Use audacity's Noise reduction Effect to reduce noise in all electrodes, based on a selected noise segment in electrode 87. Export all noise reduced electrode signals to wav files with "Export multiple" in File dialog.
+2. Use Audacity's Noise reduction Effect to reduce noise in all electrodes, based on a selected noise segment in electrode 87. Export all noise reduced electrode signals to wav files with "Export multiple" in File dialog.
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_selecting_noise_segment.png)
 ![2 87 raw audio audacity](/img/2_87_raw_audio_audacity_noise_reduced.PNG)
 
-3. Use noise reduces wav files to make 6 seconds 80 % overlapping sliding windows producing histograms matrices of peak counts by running compute_frequency_ap_histograms.py.
-Electrode 87 matrix along time axis.
+3. Use noise reduced wav files to make 6 seconds 80 % overlapping sliding windows producing histograms matrices of peak counts by running compute_frequency_ap_histograms.py.
+Displayed is the resulting matrix for electrode 87 visualized along time axis.
 ![2 87 raw audio audacity](/img/2_87_AP_detection_from_sliding_6s_STFT_windows.PNG)
 Electrode 87 matrix visualized.
 ![2 87 raw audio audacity](/img/2_87_AP_detection_from_sliding_6s_STFT_windows_3D.PNG)
