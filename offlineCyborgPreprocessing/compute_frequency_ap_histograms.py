@@ -35,10 +35,10 @@ import os
 # for chosing bins to listen to in real-time analysis in SHODAN.
 #
 # Define directory with noise reduced wav files (noise reduced with Audacity).
-raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/2017-04-24T10-45-43 Noise Reduced/*.wav"))
+raw_filenames = sorted(glob.glob("/media/loek/HD/Cyborg/Master thesis/Sound/2018-01-22T11-05-33 Noise Reduced/*.wav"))
 #
 # Define output directory to store individual and combined aggregated peak count histograms.
-output_directory = "/media/loek/HD/Cyborg/Master thesis/data/Preprocessed/offline/2017-04-24T10-45-43"
+output_directory = "/media/loek/HD/Cyborg/Master thesis/data/Preprocessed/offline/2018-01-22T11-05-33"
 # First part is a custom preak detection algorithm written by Marcos Duarte:
 # ---- start peak detection algorithm
 # script motivated by matlab's https://se.mathworks.com/help/signal/ref/findpeaks.html
