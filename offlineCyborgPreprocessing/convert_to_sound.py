@@ -39,7 +39,7 @@ file_path_to_folder_with_raw_csv = "/media/loek/HD/Cyborg/Master thesis/data/Raw
                                                                                  # Full system path might be required.
 # Specify the system path to the
 # folder where to save the sound-
-save_path_for_sound = "/media/loek/HD/Cyborg/Master thesis/Sound/2017-06-05T12-49-11 Global Scaling" # <-- EDIT HERE! FOLDER WHERE to save sound.
+save_path_for_sound = "/media/loek/HD/Cyborg/Master thesis/Sound/2017-06-12T11-40-48 (#4) Global Median Scaling" # <-- EDIT HERE! FOLDER WHERE to save sound.
 
 # the following line stores all the csv file names as a list of strings
 raw_filenames = sorted(glob.glob(file_path_to_folder_with_raw_csv + "/*.csv")) # * to select all files with file extension .csv
@@ -55,7 +55,7 @@ def find_index_of_list_containing_string(l, s):
 
 # SELECT the csv to import by
 # writing the START OF THE FILE NAME.
-experiment_index = find_index_of_list_containing_string(raw_filenames, "2017-06-05T12-49-11") # <-- EDIT HERE! START OF THE CSV FILE NAME TO SELECT.
+experiment_index = find_index_of_list_containing_string(raw_filenames, "2017-06-12T11-40-48") # <-- EDIT HERE! START OF THE CSV FILE NAME TO SELECT.
 
 # Select the csv file to import.
 file_to_import = raw_filenames[experiment_index]
@@ -74,17 +74,17 @@ raw_file = pandas.read_csv(file_to_import, sep=",", header=header_row)
 # Get the header.
 header = list(raw_file.head(0))
 
-global_min = 0
-global_max = 0
+min_list = []
+max_list = []
 # Find min and max amplitude in MEA for comparable scaling over electrodes.
 for electrode_index in range(1,len(header)): # 1 to skip the first (TimeStamp) column
     S = np.array(raw_file[header[electrode_index]])
-    min_amp = np.min(S)
-    max_amp = np.max(S)
-    if min_amp < global_min:
-        global_min = min_amp
-    if max_amp > global_max:
-        global_max = max_amp
+    min_list += [np.min(S)]
+    max_list += [np.max(S)]
+
+# Determine the global minimum and maximum for global median scaling.
+global_min = np.median(min_list)
+global_max = np.median(max_list)
 
 # Load, convert to sound and save electrodes.
 for electrode_index in range(1,len(header)): # 1 to skip the first (TimeStamp) column
