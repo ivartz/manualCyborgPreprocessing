@@ -284,11 +284,11 @@ for path in raw_filenames:
         data = np.abs(Zxx)
         firing_histogram = np.zeros(len(f), dtype={"names":["bin", "count"], "formats":["U10","i4"]})
 
-        amp_treshold = 0.002
+        #amp_treshold = 0.002
+        amp_treshold = 0.001
 
         print("electrode " + name + " window offset [s] " + str(current_window_offset) + " count peaks")
 
-        #f_detected = np.zeros(len(data[:,0]))
         for f_index, row in enumerate(data):
             firing_histogram[f_index]["bin"] = str(int(f[f_index])) + "-" + str(int(f[f_index]) + f_step)
 
@@ -298,9 +298,6 @@ for path in raw_filenames:
                 if row[peak_index] > amp_treshold:
                     # we are certain that it is a peak
                     firing_histogram[f_index]["count"] += 1
-
-                    #if row[peak_index] > f_detected[index]:
-                    #    f_detected[peak_index] = row[peak_index]
 
         start = int(np.argwhere(firing_histogram["bin"] == "300-310"))
         stop = int(np.argwhere(firing_histogram["bin"] == "3000-3010"))
